@@ -13,6 +13,7 @@ export default function Layout({ children }) {
           name="description"
           content="TODO"
         />
+        <meta name="viewport" content="width=device-width"/>
         <meta
           property="og:image"
           content={`TODO`}
