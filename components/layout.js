@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export const siteTitle = 'kta.io'
 
-export default function Layout({ children}) {
+export default function Layout({ children }) {
   return (
     <div className={styles.container}>
       <Head>
