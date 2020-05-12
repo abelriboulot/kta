@@ -7,7 +7,7 @@ export default function CloudDesktop() {
     const possible_cloud_providers = ["AWS", "GCP"]
     const [cloud_provider, setCloud] = useState("GCP");
     const possible_os = ["Windows", "Mac", "Ubuntu"]
-    const [client_os, setOS] = useState("GCP");
+    const [client_os, setOS] = useState("Mac");
     return ( 
     <>
         <Layout>
@@ -19,7 +19,7 @@ export default function CloudDesktop() {
             <p>How to setup a cloud instance and use it as a remote environment for movies and games.</p>
         </d-title>
         <d-byline>
-            <div class="byline grid">
+            <div className="byline grid">
                 <div>
                 <h3>Author</h3>
                 <p>Abel Riboulot</p> 
@@ -70,14 +70,14 @@ export default function CloudDesktop() {
             </div>
             <h2>TLDR;</h2>
             <p>The easiest way to set everything up is to use the following scripts.</p>
-            <table class="choice_table">
+            <table className="choice_table">
                 <td>
                     {possible_os.map((os) => (
                         <th className={client_os===os ? 'selected' : null} onClick={() => setOS(os)}>{os}</th>
                     ))}
                 </td>
             </table>
-            <table class="choice_table">
+            <table className="choice_table">
                 <td>
                     {possible_cloud_providers.map((cloud) => (
                         <th className={cloud_provider===cloud ? 'selected' : null} onClick={() => setCloud(cloud)}>{cloud}</th>
