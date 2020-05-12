@@ -792,3 +792,15 @@ span.katex {
  }
 
 }
+.choice_table th{
+    cursor: pointer;
+}
+.choice_table th{
+    border-bottom: none;
+}
+.choice_table td{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+.choice_table .selected {
+    background-color: #f7941c;
+}
