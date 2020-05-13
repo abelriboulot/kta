@@ -2,11 +2,12 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
 import Layout, { siteTitle } from '../../components/layout'
-
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 export default function CloudDesktop() {
     const possible_cloud_providers = ["AWS", "GCP"]
     const [cloud_provider, setCloud] = useState("GCP");
-    const possible_os = ["Windows", "Mac", "Ubuntu"]
+    const possible_os = ["Windows", "Mac", "Linux"]
     const [client_os, setOS] = useState("Mac");
     return ( 
     <>
@@ -71,20 +72,60 @@ export default function CloudDesktop() {
             <h2>TLDR;</h2>
             <p>The easiest way to set everything up is to use the following scripts.</p>
             <table className="choice_table">
-                <td>
-                    {possible_os.map((os) => (
-                        <th className={client_os===os ? 'selected' : null} onClick={() => setOS(os)}>{os}</th>
-                    ))}
-                </td>
-            </table>
-            <table className="choice_table">
-                <td>
+
+                <tr>
                     {possible_cloud_providers.map((cloud) => (
                         <th className={cloud_provider===cloud ? 'selected' : null} onClick={() => setCloud(cloud)}>{cloud}</th>
                     ))}
-                </td>
+                </tr>
             </table>
+            
             <p>Language selected is {cloud_provider}</p>
+            
+            <table className="choice_table">
+                <tr>
+                    {possible_os.map((os) => (
+                        <th className={client_os===os ? 'selected' : null} onClick={() => setOS(os)}>{os}</th>
+                    ))}
+                </tr>
+            </table>
+            {/* Linux instructions */}
+            {client_os==='Linux' ? (
+                <div>
+                    <p>Open up a terminal and run the below.</p>
+                    <SyntaxHighlighter language="bash" style={atomDark}>
+                    {`curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install`}
+                    </SyntaxHighlighter>
+                    <div className="figcaption" style={{ "margin-top": "20px" }}>
+                        If you have any issue with the above just check <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html">this link</a>.
+                    </div>
+                </div>
+            ):null}
+
+            {/* Mac instructions */}
+            {client_os==='Mac' ? (
+                <div>
+                    <p>First open your terminal (available in the Launchpad > Utilities > Terminal) 
+                        and run the following to install the AWS CLI.</p>
+                    <SyntaxHighlighter language="bash" style={atomDark}>
+    {`curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+sudo installer -pkg AWSCLIV2.pkg -target /`}
+                    </SyntaxHighlighter>
+                    <div className="figcaption" style={{ "margin-top": "20px" }}>
+                        If you have any issue with the above just check <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html">this link</a>.
+                    </div>
+                </div>
+            ):null}
+
+            {/* Windows instructions */}
+            {client_os==='Windows' ? (
+                <div>
+                    First, install..
+                </div>
+            ):null}
+
         </d-article>
         <style jsx>{`
         .claim-figure {

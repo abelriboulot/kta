@@ -792,11 +792,16 @@ span.katex {
  }
 
 }
+
+table {
+    width: 100%;
+    table-layout: fixed;
+  }
+
 .choice_table th{
     cursor: pointer;
-}
-.choice_table th{
     border-bottom: none;
+    text-align: center;
 }
 .choice_table td{
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);

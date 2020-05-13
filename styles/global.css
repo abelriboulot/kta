@@ -680,7 +680,6 @@ code {
 
 pre code {
     display: block;
-    background: white;
     border-left: 3px solid rgba(0, 0, 0, 0.05);
     padding: 0 0 0 24px;
 }
