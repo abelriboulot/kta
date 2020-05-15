@@ -13,7 +13,7 @@ export default function CloudDesktop() {
     <>
         <Layout>
             <Head>
-                <title> {siteTitle} </title>
+                <title> {siteTitle}: Cloud Gaming How-To </title>
                 <link rel="stylesheet" href="applause-button.css" />
                 <script src="applause-button.js"></script>
             </Head>
