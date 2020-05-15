@@ -55,7 +55,7 @@ export default function CloudDesktop() {
                 <div className="claim">
                 <div className="claim-header">Watch movies, browse and play together</div>
                 I found myself using my remote machine mostly to watch movies and play with friends over the world. 
-                I'm currently in San Franciso but have friends in Tokyo and France I often catch up with. Cloud remote lets us essentially be on the same PC, without lag or degradation of performance.
+                I'm currently in San Francisco but have friends in Tokyo and France I often catch up with. Cloud remote lets us essentially be on the same PC, without lag or degradation of performance.
                 </div>
 
                 <div className="claim">
@@ -70,11 +70,11 @@ export default function CloudDesktop() {
                 
                 <div className="claim">
                 <div className="claim-header">Free credits</div>
-                There are a lot of ways to get free AWS or GCP credits. New GCP users start off with 300$ of credits for instance.
+                There are a lot of ways to get free AWS or GCP credits. New GCP users start off with $300 of credits for instance.
                 </div>
 
                 <div className="figcaption" style={{ "margin-top": "20px" }}>
-                The big caveat for all of the claim above is that you need a connection relatively fast, <b>at least 2mbps</b> othewise you might experience a degredation of the quality of the video, and possibly lag.
+                The big caveat for all the claims above is that you need a connection relatively fast, <b>at least 2mbps</b> otherwise you might experience a degradation of the quality of the video, and possibly lag.
                 </div>
             </div>
             <h2>How do I get started?</h2>
