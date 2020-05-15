@@ -19,7 +19,7 @@ export default function CloudDesktop() {
             </Head>
         </Layout>
         <d-title><h1>Gaming and movies on the cloud</h1>
-            <p>How to setup a cloud instance and use it as a remote environment for movies and games.</p>
+            <p>How to set up a cloud instance and use it as a remote environment for movies and games.</p>
         </d-title>
         <d-byline>
             <div className="byline grid">
@@ -45,7 +45,7 @@ export default function CloudDesktop() {
         <d-article>
             <p>
                 Hey folks, with the world keeping apart I thought it would be a good idea to make a small post on how to setup a remote desktop accessible from anywhere in the world, alone or together.
-                The costs for this tutorial range from 70c to 1.2$/h for a gaming &amp; ML server with a GPU.
+                The costs for this tutorial range from $.70/h to $1.2/h for a gaming &amp; ML server with a GPU.
                 While the cost is not insignificant, there are advantages to this setup.
             </p>
 
