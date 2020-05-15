@@ -207,7 +207,7 @@ Powershell.exe -File $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool\Pa
 {cloud_provider==='AWS'? (<p>The installer will ask you for your AWS access key to install the newest drivers. Whilst it is preferable to give it, Parsec will work as is, and you do not need to complete this part.</p>) :null}
 <p>As you follow the instructions, a reboot may be required.</p> 
 <p>Log into parsec and start sharing your remote server. On your local laptop / desktop, launch Parsec, and your machine should appear, ready to go. Connect to it in parsec, and exit the RDP program.<br/><img src="/images/cloud_desktop/remote_desktop.gif" alt=".gif showing the connection from a mac to a windows GPU machine"/></p>
-<p>You're ready to game your sorrows away, alone, or <a href="https://support.parsecgaming.com/hc/en-us/articles/115002681352-Allowing-A-Friend-To-Connect-To-Your-Computer"> together</a>!</p>
+<p>Don't forget to shut down your instance when you're not using it, otherwise you will be billed for it. You're ready to game your sorrows away, alone, or <a href="https://support.parsecgaming.com/hc/en-us/articles/115002681352-Allowing-A-Friend-To-Connect-To-Your-Computer"> together</a>!</p>
 <p><applause-button/></p>
         </d-article>
         <style jsx>{`
