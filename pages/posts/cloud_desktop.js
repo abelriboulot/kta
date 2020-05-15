@@ -45,7 +45,7 @@ export default function CloudDesktop() {
         <d-article>
             <p>
                 Hey folks, with the world keeping apart I thought it would be a good idea to make a small post on how to setup a remote desktop accessible from anywhere in the world, alone or together.
-                The below cost ranges from 70c to 1.2$/h for a gaming &amp; ML server with a GPU.
+                The costs for this tutorial range from 70c to 1.2$/h for a gaming &amp; ML server with a GPU.
                 While the cost is not insignificant, there are advantages to this setup.
             </p>
 
