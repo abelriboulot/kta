@@ -26,7 +26,6 @@ export default function Layout({ children }) {
           `,
             }}
           />
-        <html lang="en" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <meta
           name="description"
