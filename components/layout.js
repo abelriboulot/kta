@@ -32,9 +32,11 @@ export default function Layout({ children }) {
                     />
                 </a>
             </Link>
-            <div class="nav">
+            <div className="nav">
+            {/*
               <a href="/about/">About</a>
               <a href="/contact/">Contact</a>
+            */}
             </div>
         </div>
       </dt-header>
