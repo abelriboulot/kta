@@ -26,9 +26,10 @@ export default function Layout({ children }) {
             <Link href="/">
                 <a>
                     <img
-                    src="/images/logo.png"
+                    src="/images/logo.svg"
                     className={`${styles.headerHomeImage}`}
                     alt="logo"
+                    width="120px"
                     />
                 </a>
             </Link>
