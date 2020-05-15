@@ -17,7 +17,8 @@ export default function Home() {
                                 <a 
                                     class="tag peer-reviewed"
                                     title="View this article's reviews as Github issues."
-                                    href="https://github.com/distillpub/post--bayesian-optimization/issues?q=is%3Aissue+label%3Apeer-review">
+                                    //href="https://github.com/distillpub/post--bayesian-optimization/issues?q=is%3Aissue+label%3Apeer-review"
+                                    >
                                         <span> How-To </span>
                                 </a >
                             </div>
