@@ -14,8 +14,6 @@ export default function CloudDesktop() {
         <Layout>
             <Head>
                 <title> {siteTitle}: Cloud Gaming How-To </title>
-                <link rel="stylesheet" href="applause-button.css" />
-                <script src="applause-button.js"></script>
             </Head>
         </Layout>
         <d-title><h1>Gaming and movies on the cloud</h1>
@@ -87,10 +85,10 @@ export default function CloudDesktop() {
                     ))}
                 </tr>
             </table>
-            <p>Go <a href={cloud_provider==='AWS'? 'https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/':'https://cloud.google.com/free/'}>here</a> to create your {cloud_provider} account. GCP gives you $300 of free credit as a new user, but AWS's AMI does not include Windows Server costs (which is significant!) so it's a trade-off. 
+            <p>Go <a href={cloud_provider==='AWS'? 'https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/':'https://cloud.google.com/free/'}>here to create your {cloud_provider} account</a>. GCP gives you $300 of free credit as a new user, but AWS's AMI does not include Windows Server costs (which is significant!) so it's a trade-off. 
             Additionally, AWS instructions require minimal use of the terminal and might be easier for some users. In either case, you will need to add a credit card to the account.</p>
             {cloud_provider==='GCP'? (
-            <p>GCP requires you to request an increase in quotas before using GPUs. To do so click <a href="https://console.cloud.google.com/iam-admin/quotas">here</a>, or search for "quotas" in the search bar, and select "All Quotas".
+            <p>GCP requires you to request an increase in quotas before using GPUs. To do so click <a href="https://console.cloud.google.com/iam-admin/quotas">here to access the quotas page</a>, or search for "quotas" in the search bar, and select "All Quotas".
             Click on the dropdown "All metrics", and deselect all. Select "GPUs (all regions)", and edit the quota, setting it to 1, before submitting the request. The request should be fulfilled almost instantly.<br/><img src="/images/cloud_desktop/quota_increase.png" alt="Quota increase example"/></p>
             ):null}
             <table className="choice_table">
@@ -121,7 +119,7 @@ export default function CloudDesktop() {
                     <div>
                         <p>Open your terminal (available in the Launchpad > Utilities > Terminal)</p>
                         <p>You will need brew and brew cask to run the following instructions. You can install them with the below. 
-                            Alternatively you can just follow the manual instructions <a href="https://cloud.google.com/sdk/docs/quickstart-macos">here</a>.</p>
+                            Alternatively you can just <a href="https://cloud.google.com/sdk/docs/quickstart-macos">follow the manual instructions here</a>.</p>
                         <SyntaxHighlighter language="bash" style={atomDark}>
                         {`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`}
                         </SyntaxHighlighter>
@@ -169,21 +167,21 @@ export default function CloudDesktop() {
             {/* Linux instructions */}
             {client_os==='Linux' ? (
                 <div>
-                    <p>If Remmina is not installed in your distribution, install it from <a href='https://remmina.org/'>here</a>.</p>
+                    <p>If Remmina is not installed in your distribution, <a href='https://remmina.org/'>install it from here</a>.</p>
                 </div>
             ):null}
 
             {/* Mac instructions */}
             {client_os==='Mac' ? (
                 <div>
-                    <p>Download and install Microsoft Remote Desktop <a href='https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12'>here</a>.</p>
+                    <p>Download and install <a href='https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12'>Microsoft Remote Desktop here</a>.</p>
                 </div>
             ):null}
 
             {/* Windows instructions */}
             {client_os==='Windows' ? (
                 <div>
-                    <p>Download and install Microsoft Remote Desktop <a href='https://www.microsoft.com/en-us/p/microsoft-remote-desktop/9wzdncrfj3ps'>here</a>.</p>
+                    <p>Download and install <a href='https://www.microsoft.com/en-us/p/microsoft-remote-desktop/9wzdncrfj3ps'>Microsoft Remote Desktop here</a>.</p>
                 </div>
             ):null}
             <p><b>1)</b> Subscribe to the <a href="https://aws.amazon.com/marketplace/pp/B07STLTHM8">NVIDIA Gaming PC AMI</a>, this gives you access to a free Windows Server license.</p> 
@@ -208,7 +206,6 @@ Powershell.exe -File $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool\Pa
 <p>As you follow the instructions, a reboot may be required.</p> 
 <p>Log into parsec and start sharing your remote server. On your local laptop / desktop, launch Parsec, and your machine should appear, ready to go. Connect to it in parsec, and exit the RDP program.<br/><img src="/images/cloud_desktop/remote_desktop.gif" alt=".gif showing the connection from a mac to a windows GPU machine"/></p>
 <p>Don't forget to shut down your instance when you're not using it, otherwise you will be billed for it. You're ready to game your sorrows away, alone, or <a href="https://support.parsecgaming.com/hc/en-us/articles/115002681352-Allowing-A-Friend-To-Connect-To-Your-Computer"> together</a>!</p>
-<p><applause-button/></p>
         </d-article>
         <style jsx>{`
         .claim-figure {
@@ -231,10 +228,6 @@ Powershell.exe -File $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool\Pa
         p img {
             max-width:100%;
             object-fit: scale-down;
-        }
-        applause-button {
-            width: 58px; 
-            height: 58px;
         }
       `}</style>
     </>
