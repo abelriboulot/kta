@@ -87,11 +87,11 @@ export default function CloudDesktop() {
                     ))}
                 </tr>
             </table>
-            <p>Go <a href={cloud_provider==='AWS'? 'https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/':'https://cloud.google.com/free/'}>here</a> to create your {cloud_provider} account. GCP gives you 300$ of free credit as a new user, but AWS's AMI does not include Windows Server costs (which is significant!) so it's a trade-off. 
+            <p>Go <a href={cloud_provider==='AWS'? 'https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/':'https://cloud.google.com/free/'}>here</a> to create your {cloud_provider} account. GCP gives you $300 of free credit as a new user, but AWS's AMI does not include Windows Server costs (which is significant!) so it's a trade-off. 
             Additionally, AWS instructions require minimal use of the terminal and might be easier for some users. In either case, you will need to add a credit card to the account.</p>
             {cloud_provider==='GCP'? (
             <p>GCP requires you to request an increase in quotas before using GPUs. To do so click <a href="https://console.cloud.google.com/iam-admin/quotas">here</a>, or search for "quotas" in the search bar, and select "All Quotas".
-            click on the dropdown "All metrics", and deselect all. Select "GPUs (all regions", and edit the quota, setting it to 1, before submitting the request. The request should be fulfilled almost instantly.<br/><img src="/images/cloud_desktop/quota_increase.png" alt="Quota increase example"/></p>
+            Click on the dropdown "All metrics", and deselect all. Select "GPUs (all regions)", and edit the quota, setting it to 1, before submitting the request. The request should be fulfilled almost instantly.<br/><img src="/images/cloud_desktop/quota_increase.png" alt="Quota increase example"/></p>
             ):null}
             <table className="choice_table">
                 <tr>
@@ -145,7 +145,7 @@ export default function CloudDesktop() {
                 <SyntaxHighlighter language="bash" style={atomDark}>
         {`gcloud init`}
                 </SyntaxHighlighter>
-                <p>Start a server with the following command. I recommend using a n1-standard-4 which cost around 70c/h for most games / movies, or a n1-standard-8 for 1.2$/h in case of particularly demanding tasks. The below command uses a T4 GPU, but you can also go for a P4. Choose the region that is the closest to you, and make sure that they have T4 GPUs available. You can use the following command to see the availability of GPUs.</p>
+                <p>Start a server with the following command. I recommend using a n1-standard-4 which cost around $.70/h for most games / movies, or a n1-standard-8 for $1.2/h in case of particularly demanding tasks. The below command uses a T4 GPU, but you can also go for a P4. Choose the region that is the closest to you, and make sure that they have T4 GPUs available. You can use the following command to see the availability of GPUs.</p>
                 <SyntaxHighlighter language="bash" style={atomDark}>gcloud compute accelerator-types list</SyntaxHighlighter>
     <p>Sometime regions run out of available GPUs, in which case you can just try a different one.</p>
     <p>Launch your instance with the following command.</p>
@@ -160,7 +160,7 @@ export default function CloudDesktop() {
         --maintenance-policy "TERMINATE"
     `}</SyntaxHighlighter>
         <p>If everything went well, you should be able to see in the terminal your remote IP, and your server running on the Compute Engine > VM instances tab in the <a href="https://console.cloud.google.com/compute/instances">GCP console</a>.<br/><img src="/images/cloud_desktop/instance_showing_up.png" alt="Instance showing up"/></p>
-        <p>Head to <a href="https://console.cloud.google.com/compute/instances">the console</a>, and first setup a new Windows password, and make a note of it. <br/><img src="/images/cloud_desktop/set_windows_password.png" alt="Set windows password"/></p>
+        <p>Head to <a href="https://console.cloud.google.com/compute/instances">the console</a>, and first set up a new Windows password, and make a note of it. <br/><img src="/images/cloud_desktop/set_windows_password.png" alt="Set windows password"/></p>
         <p>Click on "RDP" to connect to your server (you will need to install a chrome extension).</p>
         <p>Once you are connected, launch the Google Cloud SDK Shell. <br/><img src="/images/cloud_desktop/google_cloud_sdk_shell.png" alt="Google SDK"/></p>
         <p>Launch a powershell by typing... Well... "powershell".</p>
@@ -195,7 +195,7 @@ export default function CloudDesktop() {
             <p><b>7)</b> Launch Powershell on your remote machine by clicking the Windows icon and then Powershell.<br/><img src="/images/cloud_desktop/powershell_icon.png" alt="Powershell icon"/></p>
 
         </>}
-        <p>The following should setup everything you need (h/t to the parsec team who made <a href="https://github.com/jamesstringerparsec/Parsec-Cloud-Preparation-Tool">that repo</a>. I also recommend inputting it line by line.).</p>
+        <p>The following should set up everything you need (h/t to the parsec team who made <a href="https://github.com/jamesstringerparsec/Parsec-Cloud-Preparation-Tool">that repo</a>. I also recommend inputting it line by line.).</p>
 <SyntaxHighlighter language="bash" style={atomDark}>
     {`[[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"  
 (New-Object System.Net.WebClient).DownloadFile("https://github.com/jamesstringerparsec/Parsec-Cloud-Preparation-Tool/archive/master.zip","$ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool.zip")  
