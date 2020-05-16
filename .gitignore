@@ -5,7 +5,8 @@
 /.pnp
 .pnp.js
 
-service-account.json
+# Admin stuff
+/admin
 
 # testing
 /coverage

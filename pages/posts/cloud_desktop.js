@@ -4,11 +4,20 @@ import { useState } from 'react'
 import Layout, { siteTitle } from '../../components/layout'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import ClapButton from 'react-clap-button';
+import useClaps from '../../hooks/use-claps'
+
 export default function CloudDesktop() {
     const possible_cloud_providers = ["AWS", "GCP"]
     const [cloud_provider, setCloud] = useState("GCP");
     const possible_os = ["Windows", "Mac", "Linux"]
     const [client_os, setOS] = useState("Mac");
+    const { claps, err } = useClaps("cloud_desktop", 0);
+    
+    const onCountChange = ({ count, countTotal }) => {
+
+    }
+
     return ( 
     <>
         <Layout>
@@ -18,6 +27,11 @@ export default function CloudDesktop() {
         </Layout>
         <d-title><h1>Gaming and movies on the cloud</h1>
             <p>How to set up a cloud instance and use it as a remote environment for movies and games.</p>
+            <p>{
+            claps ? <div>
+                <p>claps: {claps.total}</p>
+            </div> : 'loading...'
+            }</p>
         </d-title>
         <d-byline>
             <div className="byline grid">
@@ -205,7 +219,11 @@ Powershell.exe -File $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool\Pa
 {cloud_provider==='AWS'? (<p>The installer will ask you for your AWS access key to install the newest drivers. Whilst it is preferable to give it, Parsec will work as is, and you do not need to complete this part.</p>) :null}
 <p>As you follow the instructions, a reboot may be required.</p> 
 <p>Log into parsec and start sharing your remote server. On your local laptop / desktop, launch Parsec, and your machine should appear, ready to go. Connect to it in parsec, and exit the RDP program.<br/><img src="/images/cloud_desktop/remote_desktop.gif" alt=".gif showing the connection from a mac to a windows GPU machine"/></p>
-<p>Don't forget to shut down your instance when you're not using it, otherwise you will be billed for it. You're ready to game your sorrows away, alone, or <a href="https://support.parsecgaming.com/hc/en-us/articles/115002681352-Allowing-A-Friend-To-Connect-To-Your-Computer"> together</a>!</p>
+<p>Don't forget to shut down your instance when you're not using it, otherwise you will be billed for it. You're ready to game your sorrows away, alone, or <a href="https://support.parsecgaming.com/hc/en-us/articles/115002681352-Allowing-A-Friend-To-Connect-To-Your-Computer"> together</a>!
+</p>
+<hr className="clap-hr"/>
+<div className="clap-div"><ClapButton count={0} countTotal={0} isClicked={false} maxCount={1} onCountChange={onCountChange} /></div>
+        
         </d-article>
         <style jsx>{`
         .claim-figure {
@@ -228,6 +246,15 @@ Powershell.exe -File $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool\Pa
         p img {
             max-width:100%;
             object-fit: scale-down;
+        }
+        .clap-hr {
+            margin-bottom:15px;
+        }
+        .clap-div {
+            text-align:right;
+            padding-top:10px;
+            padding-left:10px;
+            height:90px;
         }
       `}</style>
     </>
