@@ -13,7 +13,7 @@ export default function Home() {
                 <div class="posts-list l-page">
                     <div class = "post-preview peer-reviewed">
                         <div class = "metadata" >
-                            <div class = "publishedDate"> May 14, 2020 </div> <div class="tags">
+                            <div class = "publishedDate"> May 17, 2020 </div> <div class="tags">
                                 <a 
                                     class="tag peer-reviewed"
                                     title="View this article's reviews as Github issues."

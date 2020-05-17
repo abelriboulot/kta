@@ -39,7 +39,7 @@ export default function CloudDesktop() {
                 </div>
                 <div>
                 <h3>Published</h3>
-                    <p>May 14, 2020</p> 
+                    <p>May 17, 2020</p> 
                 </div>
                 <div>
                 <h3>Last Revised</h3>
