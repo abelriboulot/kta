@@ -253,7 +253,7 @@ Powershell.exe -File $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool\Pa
             text-align:right;
             padding-top:10px;
             padding-left:10px;
-            height:90px;
+            height:140px;
         }
         .clap-number {
             margin-block-start: 10px;
