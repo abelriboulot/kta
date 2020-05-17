@@ -74,7 +74,8 @@ export default function CloudDesktop() {
 
                 <div className="claim">
                 <div className="claim-header">Performance</div>
-                Wanna play the latest games on maximum definition and with ray-tracing on? The cloud lets you deploy top-of-the-line servers at will, and adjust your configuration to your usage, paying only for the hours you actually use. 
+                Wanna play the latest games on maximum definition and with ray-tracing on? The cloud lets you deploy top-of-the-line servers at will, and adjust your configuration to your usage, paying only for the hours you actually use.
+                I also found this setup to produce a much better experience than the pixelated laggy sessions in Stadia.
                 </div>
                 
                 <div className="claim">
