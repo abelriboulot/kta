@@ -5,17 +5,20 @@ import Layout, { siteTitle } from '../../components/layout'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import ClapButton from 'react-clap-button';
-import useClaps from '../../hooks/use-claps'
+import useClaps from '../../hooks/use-claps';
+import fetch from '../../lib/fetch'
 
 export default function CloudDesktop() {
     const possible_cloud_providers = ["AWS", "GCP"]
     const [cloud_provider, setCloud] = useState("GCP");
     const possible_os = ["Windows", "Mac", "Linux"]
     const [client_os, setOS] = useState("Mac");
-    const { claps, err } = useClaps("cloud_desktop", 0);
-    
+    const id = "cloud_desktop";
+    const { status, data, error } = useClaps(id, 0);
+    const [clapped, setClapped] = useState(0);
     const onCountChange = ({ count, countTotal }) => {
-
+        fetch('/api/claps?id=' + id + '&increment=1');
+        setClapped(1);
     }
 
     return ( 
@@ -27,11 +30,6 @@ export default function CloudDesktop() {
         </Layout>
         <d-title><h1>Gaming and movies on the cloud</h1>
             <p>How to set up a cloud instance and use it as a remote environment for movies and games.</p>
-            <p>{
-            claps ? <div>
-                <p>claps: {claps.total}</p>
-            </div> : 'loading...'
-            }</p>
         </d-title>
         <d-byline>
             <div className="byline grid">
@@ -57,8 +55,7 @@ export default function CloudDesktop() {
         <d-article>
             <p>
                 Hey folks, with the world keeping apart I thought it would be a good idea to make a small post on how to setup a remote desktop accessible from anywhere in the world, alone or together.
-                The costs for this tutorial range from $.70/h to $1.2/h for a gaming &amp; ML server with a GPU.
-                While the cost is not insignificant, there are advantages to this setup.
+                The costs for this tutorial range from $.70/h to $1.2/h for a gaming &amp; ML server with a GPU, but I would highly suggest using free credits.
             </p>
 
             <div>
@@ -222,7 +219,9 @@ Powershell.exe -File $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool\Pa
 <p>Don't forget to shut down your instance when you're not using it, otherwise you will be billed for it. You're ready to game your sorrows away, alone, or <a href="https://support.parsecgaming.com/hc/en-us/articles/115002681352-Allowing-A-Friend-To-Connect-To-Your-Computer"> together</a>!
 </p>
 <hr className="clap-hr"/>
-<div className="clap-div"><ClapButton count={0} countTotal={0} isClicked={false} maxCount={1} onCountChange={onCountChange} /></div>
+<div className="clap-div"><ClapButton count={0} countTotal={status === "loading" ? 0: status === "error" ? (console.log(error)) : (data.total
+            )} isClicked={false} maxCount={1} onCountChange={onCountChange} /><h5 className="clap-number">{status === "loading" ? 0: status === "error" ? (console.log(error)) : (data.total
+                + clapped) } Claps</h5></div>
         
         </d-article>
         <style jsx>{`
@@ -255,6 +254,10 @@ Powershell.exe -File $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool\Pa
             padding-top:10px;
             padding-left:10px;
             height:90px;
+        }
+        .clap-number {
+            margin-block-start: 10px;
+            margin-right:10px;
         }
       `}</style>
     </>
