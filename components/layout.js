@@ -32,6 +32,10 @@ export default function Layout({ children }) {
           content="How-to, data-science, and dogs"
         />
         <meta name="viewport" content="width=device-width"/>
+        <meta
+          property="og:image"
+          content={`https://kta.io/images/logo.svg`}
+        />
         <meta name="og:title" content={siteTitle} />
       </Head>
 
