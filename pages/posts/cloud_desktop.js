@@ -55,7 +55,7 @@ export default function CloudDesktop() {
         <d-article>
             <p>
                 Hey folks, with the world keeping apart I thought it would be a good idea to make a small post on how to setup a remote desktop accessible from anywhere in the world, alone or together.
-                The costs for this tutorial range from $.70/h to $1.2/h for a gaming &amp; ML server with a GPU, but I would highly suggest using <a href="https://broadwaylab.com/how-to-get-free-aws-credits/">free credits</a>.
+                The costs for this tutorial range from $.70/h to $1.2/h for a gaming &amp; ML server with a GPU (half this if you use preemptible / spot instances), but I would highly suggest using <a href="https://broadwaylab.com/how-to-get-free-aws-credits/">free credits</a>.
             </p>
 
             <div>
@@ -75,7 +75,7 @@ export default function CloudDesktop() {
                 <div className="claim">
                 <div className="claim-header">Performance</div>
                 Wanna play the latest games on maximum definition and with ray-tracing on? The cloud lets you deploy top-of-the-line servers at will, and adjust your configuration to your usage, paying only for the hours you actually use.
-                I also found this setup to produce a much better experience than the pixelated laggy sessions in Stadia.
+                I also found this setup to produce a much better experience than alternatives like Stadia.
                 </div>
                 
                 <div className="claim">
@@ -97,7 +97,7 @@ export default function CloudDesktop() {
                     ))}
                 </tr>
             </table>
-            <p>Go <a href={cloud_provider==='AWS'? 'https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/':'https://cloud.google.com/free/'}>here to create your {cloud_provider} account</a>. GCP gives you $300 of free credit as a new user, but AWS's AMI does not include Windows Server costs (which is significant!) so it's a trade-off. 
+            <p>Go <a href={cloud_provider==='AWS'? 'https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/':'https://cloud.google.com/free/'}>here to create your {cloud_provider} account</a>. GCP gives you $300 of free credit as a new user, but AWS's AMI gives you a free Windows Server license so it's a trade-off. 
             Additionally, AWS instructions require minimal use of the terminal and might be easier for some users. In either case, you will need to add a credit card to the account.</p>
             {cloud_provider==='GCP'? (
             <p>GCP requires you to request an increase in quotas before using GPUs. To do so click <a href="https://console.cloud.google.com/iam-admin/quotas">here to access the quotas page</a>, or search for "quotas" in the search bar, and select "All Quotas".
