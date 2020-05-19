@@ -207,12 +207,12 @@ export default function CloudDesktop() {
         </>}
         <p>The following should set up everything you need (h/t to the parsec team who made <a href="https://github.com/jamesstringerparsec/Parsec-Cloud-Preparation-Tool">that repo</a>. I also recommend inputting it line by line.).</p>
 <SyntaxHighlighter language="bash" style={atomDark}>
-    {`[[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"  
-(New-Object System.Net.WebClient).DownloadFile("https://github.com/jamesstringerparsec/Parsec-Cloud-Preparation-Tool/archive/master.zip","$ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool.zip")  
-New-Item -Path $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool -ItemType Directory  
-Expand-Archive $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool.Zip -DestinationPath $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool  
-CD $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool\Parsec-Cloud-Preparation-Tool-master\  
-Powershell.exe -File $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool\Parsec-Cloud-Preparation-Tool-master\Loader.ps1
+    {`[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"  
+(New-Object System.Net.WebClient).DownloadFile("https://github.com/jamesstringerparsec/Parsec-Cloud-Preparation-Tool/archive/master.zip","$ENV:UserProfile\\Downloads\\Parsec-Cloud-Preparation-Tool.zip")  
+New-Item -Path $ENV:UserProfile\\Downloads\\Parsec-Cloud-Preparation-Tool -ItemType Directory  
+Expand-Archive $ENV:UserProfile\\Downloads\\Parsec-Cloud-Preparation-Tool.Zip -DestinationPath $ENV:UserProfile\\Downloads\\Parsec-Cloud-Preparation-Tool  
+CD $ENV:UserProfile\\Downloads\\Parsec-Cloud-Preparation-Tool\\Parsec-Cloud-Preparation-Tool-master\  \
+Powershell.exe -File $ENV:UserProfile\\Downloads\\Parsec-Cloud-Preparation-Tool\\Parsec-Cloud-Preparation-Tool-master\\Loader.ps1
 `}</SyntaxHighlighter>
 {cloud_provider==='AWS'? (<p>The installer will ask you for your AWS access key to install the newest drivers. Whilst it is preferable to give it, Parsec will work as is, and you do not need to complete this part.</p>) :null}
 <p>As you follow the instructions, a reboot may be required.</p> 
