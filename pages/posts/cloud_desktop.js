@@ -127,7 +127,7 @@ gcloud services enable compute.googleapis.com`}
                 <p>Start a server with the following command. I recommend using a n1-standard-4 which cost around $.70/h for most games / movies, or a n1-standard-8 for $1.2/h in case of particularly demanding tasks. The below command uses a T4 GPU, but you can also go for a P4. Choose the region that is the closest to you, and make sure that they have T4 GPUs available. You can use the following command to see the availability of GPUs.</p>
                 <SyntaxHighlighter language="bash" style={atomDark}>gcloud compute accelerator-types list</SyntaxHighlighter>
     <p>Sometime regions run out of available GPUs, in which case you can just try a different one.</p>
-    <p>Launch your instance with the following command.</p>
+    <p>Launch your instance with the following command (adjust the zone, machine-type and boot-disk-size as needed).</p>
                 <SyntaxHighlighter language="bash" style={atomDark}>
         {`gcloud compute instances create remote-gpu \\
         --machine-type n1-standard-8 \\
