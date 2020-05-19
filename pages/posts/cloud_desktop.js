@@ -136,8 +136,7 @@ gcloud services enable compute.googleapis.com`}
         --image-family windows-2019 \\
         --boot-disk-size 200 \\
         --zone us-west2-b \\
-        --maintenance-policy "TERMINATE"
-    `}</SyntaxHighlighter>
+        --maintenance-policy "TERMINATE"`}</SyntaxHighlighter>
         <p>If everything went well, you should be able to see in the terminal your remote IP, and your server running on the Compute Engine > VM instances tab in the <a href="https://console.cloud.google.com/compute/instances">GCP console</a>.<br/><img src="/images/cloud_desktop/instance_showing_up.png" alt="Instance showing up"/></p>
         <p>Head to <a href="https://console.cloud.google.com/compute/instances">the console</a>, and first set up a new Windows password, and make a note of it. <br/><img src="/images/cloud_desktop/set_windows_password.png" alt="Set windows password"/></p>
         <p>Click on "RDP" to connect to your server (you will need to install a chrome extension).</p>
