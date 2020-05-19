@@ -66,10 +66,7 @@ export default function CloudDesktop() {
             </table>
             <p>Go <a href={cloud_provider==='AWS'? 'https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/':'https://cloud.google.com/free/'}>here to create your {cloud_provider} account</a>. GCP gives you $300 of free credit as a new user, but AWS gives you a free Windows Server license so it's a trade-off. 
             Additionally, AWS instructions require minimal use of the terminal and might be easier for some users. In either case, you will need to add a credit card to the account.</p>
-            {cloud_provider==='GCP'? (
-            <p>GCP requires you to request an increase in quotas before using GPUs. To do so click <a href="https://console.cloud.google.com/iam-admin/quotas">here to access the quotas page</a>, or search for "quotas" in the search bar, and select "All Quotas".
-            Click on the dropdown "All metrics", and deselect all. Select "GPUs (all regions)", and edit the quota, setting it to 1, before submitting the request. The request should be fulfilled almost instantly.<br/><img src="/images/cloud_desktop/quota_increase.png" alt="Quota increase example"/></p>
-            ):null}
+            
             <table className="choice_table">
                 <tr>
                     {possible_os.map((os) => (
@@ -123,6 +120,10 @@ export default function CloudDesktop() {
         {`gcloud init
 gcloud services enable compute.googleapis.com`}
                 </SyntaxHighlighter>
+                {cloud_provider==='GCP'? (
+            <p>GCP requires you to request an increase in quotas before using GPUs. To do so click <a href="https://console.cloud.google.com/iam-admin/quotas">here to access the quotas page</a>, or search for "quotas" in the search bar, and select "All Quotas".
+            Click on the dropdown "All metrics", and deselect all. Select "GPUs (all regions)", and edit the quota, setting it to 1, before submitting the request. The request should be fulfilled almost instantly.<br/><img src="/images/cloud_desktop/quota_increase.png" alt="Quota increase example"/></p>
+            ):null}
                 <p>Start a server with the following command. I recommend using a n1-standard-4 which cost around $.70/h for most games / movies, or a n1-standard-8 for $1.2/h in case of particularly demanding tasks. The below command uses a T4 GPU, but you can also go for a P4. Choose the region that is the closest to you, and make sure that they have T4 GPUs available. You can use the following command to see the availability of GPUs.</p>
                 <SyntaxHighlighter language="bash" style={atomDark}>gcloud compute accelerator-types list</SyntaxHighlighter>
     <p>Sometime regions run out of available GPUs, in which case you can just try a different one.</p>
