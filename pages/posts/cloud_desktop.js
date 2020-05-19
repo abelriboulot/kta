@@ -1,61 +1,28 @@
-import Head from 'next/head'
-import Link from 'next/link'
 import { useState } from 'react'
-import Layout, { siteTitle } from '../../components/layout'
+import Post from '../../components/post'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import ClapButton from 'react-clap-button';
-import useClaps from '../../hooks/use-claps';
-import fetch from '../../lib/fetch'
+
+export const title = "Cloud Gaming How-To";
+export const short_title = "Gaming and movies on the cloud";
+export const description = "How to set up a cloud instance and use it as a remote environment for movies and games.";
+export const author = "Abel Riboulot";
+export const published_date = "May 17, 2020";
+export const last_revised_date = "N/A";
+export const repo = "N/A"
+export const id = "cloud_desktop"
 
 export default function CloudDesktop() {
     const possible_cloud_providers = ["AWS", "GCP"]
     const [cloud_provider, setCloud] = useState("GCP");
     const possible_os = ["Windows", "Mac", "Linux"]
     const [client_os, setOS] = useState("Mac");
-    const id = "cloud_desktop";
-    const { status, data, error } = useClaps(id, 0);
-    const [clapped, setClapped] = useState(0);
-    const onCountChange = ({ count, countTotal }) => {
-        fetch('/api/claps?id=' + id + '&increment=1');
-        setClapped(1);
-    }
 
-    return ( 
-    <>
-        <Layout>
-            <Head>
-                <title> {siteTitle}: Cloud Gaming How-To </title>
-            </Head>
-        </Layout>
-        <d-title><h1>Gaming and movies on the cloud</h1>
-            <p>How to set up a cloud instance and use it as a remote environment for movies and games.</p>
-        </d-title>
-        <d-byline>
-            <div className="byline grid">
-                <div>
-                <h3>Author</h3>
-                <p>Abel Riboulot</p> 
-                </div>
-                <div>
-                <h3>Published</h3>
-                    <p>May 17, 2020</p> 
-                </div>
-                <div>
-                <h3>Last Revised</h3>
-                    <p>N/A</p> 
-                </div>
-                <div>
-                <h3>Repo</h3>
-                
-                    <p>N/A</p>
-                </div>
-            </div>
-        </d-byline>
-        <d-article>
+    return (
+        <Post id={id} title={title} short_title={short_title} description={description} author={author} published_date={published_date} last_revised_date={last_revised_date} repo={repo}>
             <p>
                 Hey folks, with the world keeping apart I thought it would be a good idea to make a small post on how to setup a remote desktop accessible from anywhere in the world, alone or together.
-                The costs for this tutorial range from $.70/h to $1.2/h for a gaming &amp; ML server with a GPU, but I would highly suggest using <a href="https://broadwaylab.com/how-to-get-free-aws-credits/">free credits</a>.
+                The costs for this tutorial range from $.70/h to $1.2/h for a gaming &amp; ML server with a GPU (half this if you use preemptible / spot instances), but I would highly suggest using <a href="https://broadwaylab.com/how-to-get-free-aws-credits/">free credits</a>.
             </p>
 
             <div>
@@ -75,7 +42,7 @@ export default function CloudDesktop() {
                 <div className="claim">
                 <div className="claim-header">Performance</div>
                 Wanna play the latest games on maximum definition and with ray-tracing on? The cloud lets you deploy top-of-the-line servers at will, and adjust your configuration to your usage, paying only for the hours you actually use.
-                I also found this setup to produce a much better experience than the pixelated laggy sessions in Stadia.
+                I also found this setup to produce a much better experience than alternatives like Stadia.
                 </div>
                 
                 <div className="claim">
@@ -97,7 +64,7 @@ export default function CloudDesktop() {
                     ))}
                 </tr>
             </table>
-            <p>Go <a href={cloud_provider==='AWS'? 'https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/':'https://cloud.google.com/free/'}>here to create your {cloud_provider} account</a>. GCP gives you $300 of free credit as a new user, but AWS's AMI does not include Windows Server costs (which is significant!) so it's a trade-off. 
+            <p>Go <a href={cloud_provider==='AWS'? 'https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/':'https://cloud.google.com/free/'}>here to create your {cloud_provider} account</a>. GCP gives you $300 of free credit as a new user, but AWS gives you a free Windows Server license so it's a trade-off. 
             Additionally, AWS instructions require minimal use of the terminal and might be easier for some users. In either case, you will need to add a credit card to the account.</p>
             {cloud_provider==='GCP'? (
             <p>GCP requires you to request an increase in quotas before using GPUs. To do so click <a href="https://console.cloud.google.com/iam-admin/quotas">here to access the quotas page</a>, or search for "quotas" in the search bar, and select "All Quotas".
@@ -151,9 +118,10 @@ export default function CloudDesktop() {
                         Install the Google Cloud SDK Shell following those <a href="https://cloud.google.com/sdk/docs/quickstart-windows">instructions</a>.
                     </div>
                 ):null}
-                <p>You will need to initialize the gcloud CLI and login to your GCP account with the following command.</p>
+                <p>You will need to initialize the gcloud CLI and activate the GCE API with the following commands.</p>
                 <SyntaxHighlighter language="bash" style={atomDark}>
-        {`gcloud init`}
+        {`gcloud init
+gcloud services enable compute.googleapis.com`}
                 </SyntaxHighlighter>
                 <p>Start a server with the following command. I recommend using a n1-standard-4 which cost around $.70/h for most games / movies, or a n1-standard-8 for $1.2/h in case of particularly demanding tasks. The below command uses a T4 GPU, but you can also go for a P4. Choose the region that is the closest to you, and make sure that they have T4 GPUs available. You can use the following command to see the availability of GPUs.</p>
                 <SyntaxHighlighter language="bash" style={atomDark}>gcloud compute accelerator-types list</SyntaxHighlighter>
@@ -207,60 +175,18 @@ export default function CloudDesktop() {
         </>}
         <p>The following should set up everything you need (h/t to the parsec team who made <a href="https://github.com/jamesstringerparsec/Parsec-Cloud-Preparation-Tool">that repo</a>. I also recommend inputting it line by line.).</p>
 <SyntaxHighlighter language="bash" style={atomDark}>
-    {`[[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"  
-(New-Object System.Net.WebClient).DownloadFile("https://github.com/jamesstringerparsec/Parsec-Cloud-Preparation-Tool/archive/master.zip","$ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool.zip")  
-New-Item -Path $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool -ItemType Directory  
-Expand-Archive $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool.Zip -DestinationPath $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool  
-CD $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool\Parsec-Cloud-Preparation-Tool-master\  
-Powershell.exe -File $ENV:UserProfile\Downloads\Parsec-Cloud-Preparation-Tool\Parsec-Cloud-Preparation-Tool-master\Loader.ps1
+    {`[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"  
+(New-Object System.Net.WebClient).DownloadFile("https://github.com/jamesstringerparsec/Parsec-Cloud-Preparation-Tool/archive/master.zip","$ENV:UserProfile\\Downloads\\Parsec-Cloud-Preparation-Tool.zip")  
+New-Item -Path $ENV:UserProfile\\Downloads\\Parsec-Cloud-Preparation-Tool -ItemType Directory  
+Expand-Archive $ENV:UserProfile\\Downloads\\Parsec-Cloud-Preparation-Tool.Zip -DestinationPath $ENV:UserProfile\\Downloads\\Parsec-Cloud-Preparation-Tool  
+CD $ENV:UserProfile\\Downloads\\Parsec-Cloud-Preparation-Tool\\Parsec-Cloud-Preparation-Tool-master\\ 
+Powershell.exe -File $ENV:UserProfile\\Downloads\\Parsec-Cloud-Preparation-Tool\\Parsec-Cloud-Preparation-Tool-master\\Loader.ps1
 `}</SyntaxHighlighter>
 {cloud_provider==='AWS'? (<p>The installer will ask you for your AWS access key to install the newest drivers. Whilst it is preferable to give it, Parsec will work as is, and you do not need to complete this part.</p>) :null}
 <p>As you follow the instructions, a reboot may be required.</p> 
 <p>Log into parsec and start sharing your remote server. On your local laptop / desktop, launch Parsec, and your machine should appear, ready to go. Connect to it in parsec, and exit the RDP program.<br/><img src="/images/cloud_desktop/remote_desktop.gif" alt=".gif showing the connection from a mac to a windows GPU machine"/></p>
 <p>Don't forget to shut down your instance when you're not using it, otherwise you will be billed for it. You're ready to game your sorrows away, alone, or <a href="https://support.parsecgaming.com/hc/en-us/articles/115002681352-Allowing-A-Friend-To-Connect-To-Your-Computer"> together</a>!
 </p>
-<hr className="clap-hr"/>
-<div className="clap-div"><ClapButton count={0} countTotal={status === "loading" ? 0: status === "error" ? (console.log(error)) : (data.total
-            )} isClicked={false} maxCount={1} onCountChange={onCountChange} /><h5 className="clap-number">{status === "loading" ? 0: status === "error" ? (console.log(error)) : (data.total
-                + clapped) } Claps</h5></div>
-        
-        </d-article>
-        <style jsx>{`
-        .claim-figure {
-            --font-style: italic;
-        }
-        .claim-header {
-            font-weight: bold;
-            font-size: 90%;
-        }
-        .claim {
-            margin-top: 5px;
-            margin-bottom: 5px;
-            flex-grow: 1;
-        }
-        .figcaption {
-            font-size: 13px;
-            color: rgba(0, 0, 0, 0.6);
-            line-height: 1.5em;
-        }
-        p img {
-            max-width:100%;
-            object-fit: scale-down;
-        }
-        .clap-hr {
-            margin-bottom:15px;
-        }
-        .clap-div {
-            text-align:right;
-            padding-top:10px;
-            padding-left:10px;
-            height:140px;
-        }
-        .clap-number {
-            margin-block-start: 10px;
-            margin-right:10px;
-        }
-      `}</style>
-    </>
+        </Post>
     )
 }
