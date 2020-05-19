@@ -8,6 +8,8 @@
 # Admin stuff
 /admin
 
+/ignore
+
 # testing
 /coverage
 
