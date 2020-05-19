@@ -52,41 +52,5 @@ export default function Post({id, title, short_title, description, author, publi
                         + clapped) } Claps</h5></div>
                 
                 </d-article>
-                <style jsx>{`
-                .claim-figure {
-                    --font-style: italic;
-                }
-                .claim-header {
-                    font-weight: bold;
-                    font-size: 90%;
-                }
-                .claim {
-                    margin-top: 5px;
-                    margin-bottom: 5px;
-                    flex-grow: 1;
-                }
-                .figcaption {
-                    font-size: 13px;
-                    color: rgba(0, 0, 0, 0.6);
-                    line-height: 1.5em;
-                }
-                p img {
-                    max-width:100%;
-                    object-fit: scale-down;
-                }
-                .clap-hr {
-                    margin-bottom:15px;
-                }
-                .clap-div {
-                    text-align:right;
-                    padding-top:10px;
-                    padding-left:10px;
-                    height:140px;
-                }
-                .clap-number {
-                    margin-block-start: 10px;
-                    margin-right:10px;
-                }
-            `}</style>
     </>)
 }
