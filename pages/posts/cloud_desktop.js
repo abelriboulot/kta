@@ -151,9 +151,10 @@ export default function CloudDesktop() {
                         Install the Google Cloud SDK Shell following those <a href="https://cloud.google.com/sdk/docs/quickstart-windows">instructions</a>.
                     </div>
                 ):null}
-                <p>You will need to initialize the gcloud CLI and login to your GCP account with the following command.</p>
+                <p>You will need to initialize the gcloud CLI and activate the GCE API with the following commands.</p>
                 <SyntaxHighlighter language="bash" style={atomDark}>
-        {`gcloud init`}
+        {`gcloud init
+gcloud services enable compute.googleapis.com`}
                 </SyntaxHighlighter>
                 <p>Start a server with the following command. I recommend using a n1-standard-4 which cost around $.70/h for most games / movies, or a n1-standard-8 for $1.2/h in case of particularly demanding tasks. The below command uses a T4 GPU, but you can also go for a P4. Choose the region that is the closest to you, and make sure that they have T4 GPUs available. You can use the following command to see the availability of GPUs.</p>
                 <SyntaxHighlighter language="bash" style={atomDark}>gcloud compute accelerator-types list</SyntaxHighlighter>
