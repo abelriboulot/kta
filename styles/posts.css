@@ -809,3 +809,8 @@ table {
 .choice_table .selected {
     background-color: #f7941c;
 }
+
+p img {
+  max-width:100%;
+  object-fit: scale-down;
+}
