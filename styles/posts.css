@@ -844,3 +844,13 @@ p img {
   margin-block-start: 10px;
   margin-right:10px;
 }
+.tilted-right {
+ margin-left: 30px;
+}
+.medium_image {
+    box-sizing: border-box;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 100%;
+}

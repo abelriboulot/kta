@@ -39,7 +39,7 @@ export default function Post({id, title, short_title, description, author, publi
                 </div>
                 <div>
                 <h3>Repo</h3>
-                    <p>{repo}</p>
+                    <p><a href={repo}>{repo}</a></p>
                 </div>
             </div>
         </d-byline>
